@@ -3,7 +3,6 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Products from './components/Products/Products';
 import Filter from './components/Filter/Filter';
-import { words } from './words';
 import data from './data.json';
 import Cart from './components/Cart/Cart';
 
@@ -12,15 +11,15 @@ function App() {
   const[products,setProducts]= useState(data);
   const[size,setSize]=useState("");
   const[sort,setSort]=useState("");
-  const[cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')|| [] ));
+  const[cartItems,setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems'))|| [] );
 
   const handleFilterBySize = (e) => {
     setSize(e.target.value);
-    if(e.target.value == 'ALL'){
+    if(e.target.value === 'ALL'){
       setProducts(data);
     }else{
       let productsClone =[...products];
-      let newProducts = productsClone.filter( p => p.sizes.indexOf(e.target.value)!= -1);
+      let newProducts = productsClone.filter( p => p.sizes.indexOf(e.target.value)!== -1);
       setProducts(newProducts);
     }
   };
@@ -30,9 +29,9 @@ function App() {
     setSort(order);
     let productsClone =[...products];
     let newProducts = productsClone.sort( function(a,b){
-      if(order == 'lowest'){
+      if(order === 'lowest'){
         return a.price - b.price;
-      }else if(order == 'highest'){
+      }else if(order === 'highest'){
         return b.price - a.price;
       }else{
         return a.id < b.id ? 1: -1;
@@ -45,7 +44,7 @@ function App() {
      const cartItemsClone = [...cartItems];
      let isProductExist = false;
      cartItemsClone.forEach( p =>{
-       if(p.id == product.id){
+       if(p.id === product.id){
          p.qty++;
          isProductExist = true;
        } 

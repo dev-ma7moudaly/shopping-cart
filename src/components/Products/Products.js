@@ -13,6 +13,7 @@ function Products(props){
 
    const closeModal = () =>{
        setProduct(false);
+    
    }
 
     return (

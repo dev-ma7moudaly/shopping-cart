@@ -24,7 +24,7 @@ function Cart(props){
     
     return (
         <div className="cart-wrapper">
-            <div className="cart-title">{props.cartItems.length ==0 ? 'Cart Empty':
+            <div className="cart-title">{props.cartItems.length ===0 ? 'Cart Empty':
               <p> There is {props.cartItems.length} products in cart</p>
             }</div>
             
